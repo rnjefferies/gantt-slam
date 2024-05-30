@@ -1,7 +1,7 @@
 # |-Gantt Slam-|
 ...because building an app for your PhD annual review Gantt chart is not procrastination. 
 
-## Build your own Gantt Chart with a simple shiny app.R
+## Steps for building the Gantt Slam shiny app.R
 
 1. Clone this repository to your R workspace.
 2. Install the dependent packages.
