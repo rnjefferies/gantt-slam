@@ -1,7 +1,10 @@
-# Gantt Slam - build your own Gantt Chart with a simple shiny app.R
+# Gantt Slam
+
+## Build your own Gantt Chart with a simple shiny app.R
 
 1. Clone this repository to your R workspace.
 2. Install the dependent packages.
 3. Run the app on your local host!
 
+### WARNING ### - I only get 25hrs a month on this server -  but you can have a quick play with the app before building it yourself here: https://rnjcharts.shinyapps.io/Gantt_Slam/
 ![Tomato Gannt](https://github.com/rnjefferies/gantt-slam/blob/master/ganttSlam/www/logo.png?,raw=true)
