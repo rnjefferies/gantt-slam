@@ -6,5 +6,5 @@
 2. Install the dependent packages.
 3. Run the app on your local host!
 
-### WARNING ### - I only get 25hrs a month on this server -  but you can have a quick play with the app before building it yourself here: https://rnjcharts.shinyapps.io/Gantt_Slam/
+#### WARNING - I only get 25hrs a month on this server -  but you can have a quick play with the app before building it yourself here: https://rnjcharts.shinyapps.io/Gantt_Slam/
 ![Tomato Gannt](https://github.com/rnjefferies/gantt-slam/blob/master/ganttSlam/www/logo.png?,raw=true)
