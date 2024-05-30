@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fffccc;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.responsive-logo {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+}
+
+
+.sidebar {
+  height: 100%;
+  background-color: #edcc47;
+  margin: 1.5rem 0;
+  border-radius: 1rem;
+}
+
+.card {
+  background-color: #f09348;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid #d3d3d3;
+  margin: 1.5rem 0;
+}
+
+.sidebar .form-group, .sidebar .shiny-input-container {
+  margin-bottom: 15px; /* Adjust this value for consistent spacing */
+}
+
+.sidebar .shiny-input-container {
+  margin-top: 15px; /* Ensure top margin for shiny input containers */
+}
+
+.sidebar .input-group {
+  margin-top: 10px; /* Ensure some space above the input group */
+}
+
+/* Modal window styling */
+#shiny-modal .modal-dialog {
+  width: 80%; /* Adjust width as needed */
+}
+
+#shiny-modal .modal-content {
+  background-color: #f09348; /* Match .card background color */
+  padding: 1rem 2rem; /* Match .card padding */
+  border-radius: 1rem; /* Match .card border radius */
+  border: 1px solid #d3d3d3; /* Match .card border */
+}
+
+/* Modal form styling */
+#shiny-modal .form-well {
+  background-color: #edcc47; /* Match .sidebar background color */
+  margin: 1.5rem 0; /* Match .sidebar margin */
+  border-radius: 1rem; /* Match .sidebar border radius */
+  padding: 1rem; /* Optional: Add padding for consistency */
+}
+
+/* Modal form styling */
+#shiny-modal .well {
+  background-color: #fffccc; /* Match .sidebar background color */
+  margin: 1.5rem 0; /* Match .sidebar margin */
+  border-radius: 1rem; /* Match .sidebar border radius */
+  padding: 1rem; /* Optional: Add padding for consistency */
+
+
+#shiny-modal .form-well .form-group, #shiny-modal .form-well .shiny-input-container {
+  margin-bottom: 15px; /* Match .sidebar form group spacing */
+}
+
+
+#shiny-modal .form-well .shiny-input-container {
+  margin-top: 15px; /* Match .sidebar input container top margin */
+}
+
+#shiny-modal .form-well .input-group {
+  margin-top: 10px; /* Match .sidebar input group top margin */
+}
