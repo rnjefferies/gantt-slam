@@ -1,5 +1,5 @@
 # |-Gantt Slam-|
-...because building an app for your PhD annual review Gantt chart is not procrastination. 
+*...because building an app for your PhD annual review Gantt chart is not procrastination.* 
 
 ## Steps for building the Gantt Slam shiny app.R
 
