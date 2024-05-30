@@ -10,6 +10,7 @@
 
 #### WARNING - I only get 25hrs per month on this server, so it might not be active... 
 But you can have a quick play with the app before building it yourself: https://rnjcharts.shinyapps.io/Gantt_Slam/
-![Tomato Gannt](https://github.com/rnjefferies/gantt-slam/blob/master/ganttSlam/www/logo.png?,raw=true)
 
 If anyone wants to make changes or enhancements to the app, please share them with the world. 
+![Tomato Gannt](https://github.com/rnjefferies/gantt-slam/blob/master/ganttSlam/www/logo.png?,raw=true)
+
