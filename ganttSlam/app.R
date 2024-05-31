@@ -1,3 +1,4 @@
+# Load necessary libraries for the application
 library(shiny)
 library(tidyverse)
 library(DT)
@@ -14,21 +15,20 @@ library(lubridate)
 # Source the Gantt chart module using a relative path
 source("ganttChartModule.R")
 
-
+# Define the User Interface (UI) of the Shiny app
 ui <- fluidPage(
     tags$head(
-        includeCSS("www/main.css"),
+        includeCSS("www/main.css"),  # Include custom CSS for styling
     ),
     sidebarLayout(
         sidebarPanel(
             class = "sidebar",
             tags$div(
-                  # Add logo here
-                
+                # Add a logo and title here
                 style = "text-align: center;",  # Center-align the content
-                tags$h2("|-GANTT SLAM-|"),
-                tags$img(src = "logo.png", class = "responsive-logo", width = "270px", alt = "App Logo", style = "display: block; margin-left: auto; margin-right: auto;"),                
-                tags$hr()
+                tags$h2("|-GANTT SLAM-|"),  # App title
+                tags$img(src = "logo.png", class = "responsive-logo", width = "270px", alt = "App Logo", style = "display: block; margin-left: auto; margin-right: auto;"),
+                tags$hr()  # Horizontal line separator
             ),
             textInput(inputId = "chartTitle", label = "Chart Title:", placeholder = "e.g., PhD Gantt Chart"),
             textInput(inputId = "mainTaskName", label = "Main Task:", placeholder = "e.g., Holiday Time"),
@@ -45,20 +45,21 @@ ui <- fluidPage(
         mainPanel(
             tags$div(
                 class = "card",
-                tags$h3("Task Table View"),
-                tags$hr(),
-                DTOutput(outputId = "tableTasks")
+                tags$h3("Task Table View"),  # Section title
+                tags$hr(),  # Horizontal line separator
+                DTOutput(outputId = "tableTasks")  # DataTable to display tasks
             ),
             tags$div(
                 class = "card",
-                tags$h3("Task Chart Preview"),
-                tags$hr(),
-                plotOutput(outputId = "plotTasks")
+                tags$h3("Task Chart Preview"),  # Section title
+                tags$hr(),  # Horizontal line separator
+                plotOutput(outputId = "plotTasks")  # Plot output for the Gantt chart
             )
         )
     )
 )
 
+# Define the server logic of the Shiny app
 server <- function(input, output, session) {
     initial_data <- tibble(
         ID = integer(),
@@ -75,6 +76,7 @@ server <- function(input, output, session) {
     
     df <- reactiveValues(data = initial_data)
     
+    # Function to update task factors
     update_task_factors <- function(df) {
         df %>%
             mutate(
@@ -83,6 +85,7 @@ server <- function(input, output, session) {
             )
     }
     
+    # Function to add a new task
     add_task <- function(task_name, sub_task_name, start_date, end_date, type, color) {
         new_id <- ifelse(nrow(df$data) == 0, 1, max(df$data$ID, na.rm = TRUE) + 1)
         new_row <- tibble(
@@ -107,6 +110,7 @@ server <- function(input, output, session) {
         print(df$data)
     }
     
+    # Event to add a main task
     observeEvent(input$btnAddMainTask, {
         task_name <- input$mainTaskName
         task_start_date <- input$inStartDate
@@ -118,6 +122,7 @@ server <- function(input, output, session) {
         }
     })
     
+    # Event to add a sub-task
     observeEvent(input$btnAddSubTask, {
         sub_task_name <- input$subTaskName
         task_start_date <- input$inStartDate
@@ -134,6 +139,7 @@ server <- function(input, output, session) {
         }
     })
     
+    # Event to remove a task
     observeEvent(input$button_id, {
         df$data <- df$data %>%
             filter(ID != as.integer(input$button_id)) %>%
@@ -147,6 +153,7 @@ server <- function(input, output, session) {
         print(df$data)
     })
     
+    # Event to load tasks from a file
     observeEvent(input$fileInput, {
         req(input$fileInput)
         df$data <- read_csv(input$fileInput$datapath)
@@ -167,6 +174,7 @@ server <- function(input, output, session) {
         print(df$data)
     })
     
+    # Define the download handler for saving tasks
     output$downloadData <- downloadHandler(
         filename = function() {
             paste("tasks-", Sys.Date(), ".csv", sep = "")
@@ -176,6 +184,7 @@ server <- function(input, output, session) {
         }
     )
     
+    # Render the DataTable with tasks
     output$tableTasks <- renderDT({
         datatable(df$data, escape = FALSE, options = list(
             columnDefs = list(
@@ -188,6 +197,7 @@ server <- function(input, output, session) {
         ))
     })
     
+    # Render the Gantt chart plot
     output$plotTasks <- renderPlot({
         if (nrow(df$data) > 0) {
             # Ensure TaskLabel and TaskFace are consistently factored and ordered
@@ -238,6 +248,7 @@ server <- function(input, output, session) {
         }
     })
     
+    # Event to open the Gantt chart modal
     observeEvent(input$btnOpenChart, {
         showModal(modalDialog(
             title = "Gantt Chart - Set the desired dates and dimensions then download!",
@@ -250,8 +261,9 @@ server <- function(input, output, session) {
         jqui_resizable("#shiny-modal .modal-content")  # Make the modal resizable
     })
     
+    # Call the Gantt chart server function
     ganttChartServer("ganttChartModule", reactive(df$data))
 }
 
+# Run the Shiny app
 shinyApp(ui = ui, server = server)
-
