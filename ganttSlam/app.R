@@ -34,8 +34,8 @@ ui <- fluidPage(
             textInput(inputId = "mainTaskName", label = "Main Task:", placeholder = "e.g., Holiday Time"),
             colourInput(inputId = "mainTaskColor", label = "Main Task Color:", value = colors[1]),
             textInput(inputId = "subTaskName", label = "Sub-Task:", placeholder = "e.g., Skateboarding"),
-            dateInput(inputId = "inStartDate", value = Sys.Date(), label = "Start Date:"), # Removed min parameter
-            dateInput(inputId = "inEndDate", value = Sys.Date() + 10, label = "End Date:"), # Removed min parameter
+            dateInput(inputId = "inStartDate", value = Sys.Date(), label = "Start Date:"), 
+            dateInput(inputId = "inEndDate", value = Sys.Date() + 10, label = "End Date:"),
             actionButton(inputId = "btnAddMainTask", label = "Add Main Task"),
             actionButton(inputId = "btnAddSubTask", label = "Add Sub-Task"),
             fileInput(inputId = "fileInput", label = "Load Tasks (for big Gantts!)", accept = ".csv"),
@@ -215,15 +215,15 @@ server <- function(input, output, session) {
                 labs(
                     title = input$chartTitle,
                     x = NULL,
-                    y = NULL  # Remove the y-axis title
+                    y = NULL,
                 ) +
                 theme_minimal(base_size = 15) +
                 theme(
                     plot.title = element_text(size = 24, face = "bold", hjust = 0.5),
-                    axis.title.x.top = element_text(size = 16, face = "bold"),  # Add this line
-                    axis.text.x.top = element_text(size = 12, angle = 0, hjust = 0.5),  # Add this line
-                    axis.ticks.length.x.top = unit(0.3, "cm"),  # Add this line
-                    axis.ticks.x.top = element_line(color = "black"),  # Add this line
+                    axis.title.x.top = element_text(size = 16, face = "bold"), 
+                    axis.text.x.top = element_text(size = 12, angle = 0, hjust = 0.5), 
+                    axis.ticks.length.x.top = unit(0.3, "cm"), 
+                    axis.ticks.x.top = element_line(color = "black"),  
                     axis.text.y = element_markdown(size = 12),
                     axis.ticks.y = element_blank(),
                     panel.grid.major.x = element_line(color = "gray80"),
